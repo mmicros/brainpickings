@@ -23,7 +23,8 @@ def get_all_posts():
 def get_linked_posts():
     for post in posts:
         links=[]
-        print(f"post:{post}")
+
+        print(f"post : {post}")
         req = requests.get(post)
         if req:
             soup=bs(req.text)
@@ -33,7 +34,7 @@ def get_linked_posts():
         for link_tag in link_tags:
             if(link_tag.has_attr('href') and ("https://www.brainpickings.org/2" in link_tag['href'])):
                 links.append(link_tag['href'])
-                print("\t"+link_tag['href'])
+                print(f"\t link: {link_tag['href']}")
         linked_posts[post]=links
         
 
@@ -42,7 +43,7 @@ print(len(posts))
 get_linked_posts()
 
 # sanity check (can be deleted later)
-f = open("dict.txt","a")
-f.write(linked_posts)
+f = open("dictionary.txt","a")
+f.write(str(linked_posts))
 f.close
 
