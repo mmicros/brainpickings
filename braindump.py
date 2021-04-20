@@ -39,7 +39,6 @@ def get_linked_posts():
         
 
 get_all_posts()
-print(len(posts))
 get_linked_posts()
 
 # sanity check (can be deleted later)
